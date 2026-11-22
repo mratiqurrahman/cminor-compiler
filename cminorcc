@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+from cminor.driver import main
+raise SystemExit(main())

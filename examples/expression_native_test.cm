@@ -1,0 +1,84 @@
+int pair(int a, int b) {
+    return a * 10 + b;
+}
+
+int main(void) {
+    int x = 0;
+    int y = 0;
+    int z = 0;
+
+    /* Precedence and associativity */
+    if (2 + 3 * 4 != 14) return 1;
+    if ((2 + 3) * 4 != 20) return 2;
+    if (20 / 5 / 2 != 2) return 3;
+    if (10 - 3 - 2 != 5) return 4;
+
+    /* Signed division and remainder */
+    if (-7 / 3 != -2) return 5;
+    if (7 / -3 != -2) return 6;
+    if (-7 % 3 != -1) return 7;
+    if (7 % -3 != 1) return 8;
+    if (-7 % -3 != -1) return 9;
+
+    /* Comparison and boolean normalization */
+    if ((5 > 3) != 1) return 10;
+    if ((5 < 3) != 0) return 11;
+    if ((!0) != 1) return 12;
+    if ((!5) != 0) return 13;
+    if ((!!5) != 1) return 14;
+
+    /* Short-circuit AND and OR */
+    x = 0;
+    if (0 && (x = 1)) return 15;
+    if (x != 0) return 16;
+
+    if (1 || (x = 2)) {
+        x = x + 1;
+    }
+    if (x != 1) return 17;
+
+    /* Left-to-right binary operand evaluation */
+    x = 0;
+    x = (x = 1) + (x = 2);
+    if (x != 3) return 18;
+
+    /* Left-to-right function argument evaluation */
+    x = 0;
+    if (pair(x = 1, x = 2) != 12) return 19;
+    if (x != 2) return 20;
+
+    /* Assignment evaluates RHS before storing */
+    x = 4;
+    if ((x = x + 3) != 7) return 21;
+    if (x != 7) return 22;
+
+    /* Nested function calls */
+    if (pair(pair(1, 2), pair(3, 4)) != 154) return 23;
+
+    /* Right-to-left assignment associativity */
+    x = 0;
+    y = 0;
+    z = 0;
+    if ((x = y = z = 5) != 5) return 24;
+    if (x != 5 || y != 5 || z != 5) return 25;
+
+    /* Additional expression operators */
+    if (+5 != 5) return 26;
+    if ((3 <= 3) != 1) return 27;
+    if ((4 >= 5) != 0) return 28;
+    if ((5 == 5) != 1) return 29;
+    if ((5 != 5) != 0) return 30;
+
+    /* Logical expressions produce exactly 0 or 1 */
+    if ((2 && 7) != 1) return 31;
+    if ((0 && 7) != 0) return 32;
+    if ((0 || 7) != 1) return 33;
+    if ((0 || 0) != 0) return 34;
+
+    /* Assignment evaluates the complete RHS before storing */
+    x = 4;
+    if ((x = (x = 5) + x) != 10) return 35;
+    if (x != 10) return 36;
+
+    return 0;
+}
