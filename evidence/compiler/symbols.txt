@@ -1,0 +1,29 @@
+SYMBOLS
+s0 function file int(1 int) factorial defined=yes at examples/loop_call_trace.cm:1:1
+s1 function file int(1 int) sum_to defined=yes at examples/loop_call_trace.cm:2:1
+s2 function file int(0 int) main defined=yes at examples/loop_call_trace.cm:3:1
+s3 local int total scope=function:main at examples/loop_call_trace.cm:4:5
+s4 local int fact scope=function:main at examples/loop_call_trace.cm:5:5
+s5 parameter int n scope=function:factorial at examples/loop_call_trace.cm:10:15
+s6 parameter int n scope=function:sum_to at examples/loop_call_trace.cm:14:12
+s7 local int result scope=function:sum_to at examples/loop_call_trace.cm:15:5
+s8 local int i scope=function:sum_to/for at examples/loop_call_trace.cm:16:10
+RESOLUTIONS
+examples/loop_call_trace.cm:4:17 call -> s1
+examples/loop_call_trace.cm:5:16 call -> s0
+examples/loop_call_trace.cm:6:9 read -> s3
+examples/loop_call_trace.cm:7:9 read -> s4
+examples/loop_call_trace.cm:11:9 read -> s5
+examples/loop_call_trace.cm:12:12 read -> s5
+examples/loop_call_trace.cm:12:26 read -> s5
+examples/loop_call_trace.cm:12:16 call -> s0
+examples/loop_call_trace.cm:16:21 read -> s8
+examples/loop_call_trace.cm:16:26 read -> s6
+examples/loop_call_trace.cm:16:29 read -> s8
+examples/loop_call_trace.cm:16:33 read -> s8
+examples/loop_call_trace.cm:16:29 write -> s8
+examples/loop_call_trace.cm:17:9 read -> s7
+examples/loop_call_trace.cm:17:18 read -> s7
+examples/loop_call_trace.cm:17:27 read -> s8
+examples/loop_call_trace.cm:17:9 write -> s7
+examples/loop_call_trace.cm:19:12 read -> s7
